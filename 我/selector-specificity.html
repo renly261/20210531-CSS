@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>選擇器權重(selector-specificity)</title>
+    <style>
+        /* 文字 顏色相關會繼承 font- color line-height */
+        /* 背景 定位 盒模型(padding margin border) 不會繼承 */
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-size: 1.5rem;
+        }
+
+        div {
+            color: red;
+        }
+
+        p {
+            color: green;
+        }
+
+        span {
+            color: blue;
+        }
+
+        /* 大老二遊戲
+        1.inline style(黑桃):1,0,0,0 
+        2.ID 選擇器(愛心):0,1,0,0
+        3.class 選擇器、屬性選擇器[]、偽類(方塊):0,0,1,0
+        4.標籤、偽元素(梅花):0,0,0,1 
+
+        以下不計分
+        連接符號例如 空白(後代選擇器) >(子代選擇器) ~(同層全體選擇器) +(同層相鄰選擇器) 
+        ||(或) ^(開頭) $(結尾) *(通用選擇器) :not()
+
+        :not() 本身不計分，但 :not(selector) 括號內部的 selector 會計算分數
+        */
+
+        /* 第一組 */
+        /* 0,1,0,0 + 0,0,0,1 = 0,1,0,1 */
+        #box1 p {
+            color: green;
+        }
+
+        /* 0,0,1,0 + 0,0,0,1 = 0,0,1,1 */
+        .box p {
+            color: red;
+        }
+
+        /* 第二組 inline 行內樣式 */
+        /* 0,1,0,0 + 0,0,1,0 + 0,0,0,1 + 0,0,0,1 = 0,1,1,2 */
+        #box2 .box h1+p {
+            color: yellow;
+        }
+
+        /* 
+        * = 0,0,0,0
+        h1 = 0,0,0,1
+        ul>ul = 0,0,0,1 + 0,0,0,0 + 0,0,0,1 = 0,0,0,2
+        li>ol+ol = 0,0,0,1 + 0,0,0,0 + 0,0,0,1 + 0,0,0,0 + 0,0,0,1 = 0,0,0,3
+        .foo = 0,0,1,0
+        a:not([rel='nofollow']) = 0,0,0,1 + 0,0,0,0 + 0,0,1,0 = 0,0,1,1
+        ol li.foo = 0,0,0,1 + 0,0,0,1 + 0,0,1,0 = 0,0,1,2
+        a:hover = 0,0,0,1 + 0,0,0,0 + 0,0,1,0 = 0,0,1,1 (hover 偽類 0,0,1,0)
+        #foo .bar p = 0,1,0,0 + 0,0,1,0 + 0,0,0,1 = 0,1,1,1
+         */
+
+        /* 樣式外觀先看權重分數 如果權重分數一樣再去看程式碼前後順序(後面會蓋掉前面)*/
+
+        /* 
+        1. #section01 .contaoner .row .col .card align-self: hover;
+        2. #section01 .card a:hover
+        3. .card a:hover
+        第一個太長(寫得累 電腦也讀得多) 第三個太短(若有其他 section 會全部選到) 第二個是比較好寫法
+         */
+    </style>
+</head>
+
+<body>
+    <h1>階層屬性繼承</h1>
+    <p>例如 color ，內層元素沒有 color 可以根據外層元素繼承 color</p>
+    <div>
+        <h1>標題</h1>
+        <p>Lorem ipsum dolor sit amet <span>consectetur adipisicing</span> elit. Repudiandae, ea.</p>
+    </div>
+
+    <hr>
+
+    <h1>階層權重 為選擇器打分數</h1>
+    <div id="box1">
+        <div class="box">
+            <h1>標題</h1>
+            <p>Lorem ipsum dolor sit amet consectetur <a href="#"><em>adipisicing elit.</em></a> Fugiat incidunt qui
+                unde sint rerum esse vel
+                eveniet necessitatibus. Cumque impedit error perferendis magni sequi iusto, labore libero consequatur
+                ipsa debitis!</p>
+        </div>
+    </div>
+
+    <div id="box2">
+        <div class="box">
+            <h1>標題</h1>
+            <p style="color:purple">Lorem ipsum dolor sit amet consectetur <a href="#"><em>adipisicing elit.</em></a>
+                Fugiat incidunt qui
+                unde sint rerum esse vel
+                eveniet necessitatibus. Cumque impedit error perferendis magni sequi iusto, labore libero consequatur
+                ipsa debitis!</p>
+        </div>
+    </div>
+</body>
+
+</html>

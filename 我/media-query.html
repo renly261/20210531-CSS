@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- RWD 一定要有這一行 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            box-sizing: border-box;
+            font-family: 'Noto Sans TC', 'Microsoft JhengHei', 'sans-serif';
+        }
+
+        /* 
+        vw 計算(抓瀏覽器的尺寸)
+        假設螢幕尺寸 1000px
+        1vw => 1000 * 1/100 = 10px
+        100vw => 1000px
+        */
+        :root {
+            --primary: #0d6efd;
+            --secondary: #6c757d;
+            --success: #198754;
+            --info: #0dcaf0;
+            --warning: #ffc107;
+            --danger: #dc3545;
+            /* calc 計算符號前後要空格 */
+            /* 隨著尺寸調整字體大小 */
+            font-size: calc(0.75rem + 1.125vw)
+        }
+
+        body {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: url("https://picsum.photos/1920/1080/?random=1") no-repeat center center/cover
+        }
+
+        /* 0~575px 最小尺寸 -xs */
+        .container {
+            background: #fff;
+            width: 95%;
+            margin: 1rem auto;
+            padding: 15px;
+            border: 1px solid #000;
+        }
+
+        h1 {
+            color: var(--warning);
+            background: var(--success);
+            margin-bottom: 1rem;
+        }
+
+        .sidebar {
+            display: none;
+            width: 150px;
+            color: white;
+            border-radius: 1rem;
+            padding: 1rem;
+            background: #000;
+            position: fixed;
+            left: 0;
+        }
+
+        /* media type => all print screen(電腦 平版 手機) speech(螢幕閱讀器) */
+        @media all and (min-width: 500px) {
+            /* 樣式 */
+        }
+
+        /* min-width 尺寸在 576px 以上的時候的樣式 */
+        /* media type 為 all 時可以省略 */
+        @media (min-width: 576px) {
+            /* 樣式 */
+        }
+
+        /* max-width 尺寸在 768px 以下的時候的樣式 */
+        @media (max-width:768px) {
+            /* 樣式 */
+        }
+
+        /* 裝置介於 576px 與 768px 之間的樣式 */
+        @media (min-width:576px) and (max-width:768px) {
+            /* 樣式 */
+        }
+
+        /* 斷點 breakpoint */
+        /* 裝置尺寸超過 576px 以上套用的樣式 -sm */
+        @media (min-width: 576px) {
+            body {
+                background: url("https://picsum.photos/1920/1080/?random=2") no-repeat center center/cover
+            }
+
+            .container {
+                border: 3px dashed #000;
+            }
+
+            h1 {
+                color: yellow;
+                background: purple;
+            }
+        }
+
+        /* 裝置尺寸超過 768px 以上套用的樣式 -md */
+        @media (min-width: 768px) {
+            body {
+                background: url("https://picsum.photos/1920/1080/?random=3") no-repeat center center/cover
+            }
+
+            .container {
+                width: 80%;
+                border: 10px solid #000;
+                outline: 10px dashed white;
+            }
+
+            h1 {
+                color: yellow;
+                background: blue;
+            }
+        }
+
+        /* 裝置尺寸超過 992px 以上套用的樣式 -lg */
+        @media (min-width: 992px) {
+            body {
+                background: url("https://picsum.photos/1920/1080/?random=4") no-repeat center center/cover
+            }
+
+            .container {
+                outline: none;
+                border: 10px solid darkred;
+                box-shadow: 0 0 50px 25px rgba(0, 0, 0, 0.5)''
+            }
+
+            h1 {
+                color: var(--warning);
+                background: rgb(35, 37, 85);
+            }
+
+            .sidebar {
+                display: block;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>響應式網頁<span>(Responsive web design,RWD)</span></h1>
+        <ul>
+            <li>1.響應式網頁，讓內容如流水般能適應各種形狀的容器，能在每個裝置尺寸正常瀏覽</li>
+            <li>2.CSS的媒體查詢(media query)負責響應式主要的工作</li>
+            <li>3.媒體查詢的斷點(breakpoint)為不同裝置設定通過的位置點，當通過設定的位置點的時候套用該尺寸的樣式</li>
+            <li>4.使用相對單位設定寬高 大小(rem % vh vw)，字體大小使用 rem ， 容器 width height 使用 %</li>
+            <li>5.RWD 一定要有這行
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            </li>
+        </ul>
+    </div>
+
+    <div class="sidebar">
+        想像每天妻子湖口國外相應主演股份有限公司包括，精華新聞不夠感動屬性賺錢長大提出了頁面，圖書館手機，引導用途有意參考添加變得思想說過表達渠道告訴我招標客人，不懂數碼文件大小完成，下面評估留在篇文章任何人先生具體條款我愛外掛說法本站，人物污染放棄足夠預覽無關。
+    </div>
+</body>
+
+</html>

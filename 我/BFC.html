@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .wrap {
+            width: 960px;
+            margin: auto;
+            background: red;
+            /* overflow: auto; */
+            /* position: absolute; */
+            /* display:table-cell */
+        }
+
+        .box {
+            width: 200px;
+            height: 200px;
+            border: 1px solid red;
+            float: left;
+            background: #eee;
+        }
+
+        .img {
+            float: left;
+        }
+
+        .content {
+            overflow: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>父元素裡面的 float</h1>
+    <div class="wrap">
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+    </div>
+
+    <!-- <div class="wrap">
+        <div class="img">
+            <img src="https://picsum.photos/200/200/?random=1">
+        </div>
+        <div class="content">
+            <p>目的法律責任經濟人氣誠信歷史漂亮身份評論體制手段可是轎車似乎，檢測溫柔曝光請問，並且付款，連載存在一部分什麼事，確定性別相關互相掌握事項轉載私人共享版台北，小七手冊，台中世紀不可詳細神話我去詢問韓國等人，聲音學校你也疾病官員就是網遊也會，吃飯伺服器，堅持。
+            </p>
+        </div>
+    </div> -->
+
+    <style>
+        .container {
+            width: 1200px;
+            padding: 1rem;
+            margin: 0 auto;
+            border: 1px solid #333;
+        }
+
+        .item {
+            background: #ffa;
+            overflow: auto;
+        }
+
+        .item p {
+            background: #aaa;
+            margin: 50px;
+        }
+    </style>
+
+    <div class="container">
+        <div class="item">
+            <p></p>
+        </div>
+    </div>
+</body>
+
+</html>
